@@ -1,0 +1,10 @@
+.article{
+    padding: 1% 2% 1% 2%;
+    background: #FFFFFF;
+}
+.article .title{
+    color: #EE9285;
+}
+.article .abstract{
+    border: 1px gray dashed;
+}

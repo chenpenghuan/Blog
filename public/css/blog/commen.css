@@ -1,0 +1,51 @@
+@charset "utf-8";
+@media (max-width: 960px) {
+    .navbar-wrapper{
+        top: 0;
+    }
+}
+*{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
+body{
+    background-color: #efefef;
+    word-wrap: break-word;
+    color: #34495e;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+h1, h2, h3{
+    line-height: 1.6em;
+    font-weight: bold;
+}
+a, a:hover {
+    text-decoration: none;
+}
+a, a:hover, a:visited{
+    color: #ee9285;
+}
+a:hover{
+    opacity: .7;
+}
+
+#wrap {
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+}
+
+.main {
+    background: #EFEFEF;
+}
+
+.items {
+    background: #F8F8F8;
+}
+
+.end {
+    background: #F8F8F8;
+    line-height: 5em;
+}
+.black{
+    height:20px;
+}
