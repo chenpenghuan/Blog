@@ -26,8 +26,6 @@
             }
             body{
                 margin: 0 auto;
-                margin-top: 5%;
-                width: 90%;
                 padding-bottom: 3%;
             }
         @endif
