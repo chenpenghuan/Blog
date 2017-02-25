@@ -6,6 +6,8 @@
  * Time: 22:30
  */
 return [
+    //博客标题
+    'BlogTitle'=>'拾荒少年',
     //public目录路径
     'public'=>'/public',
     //菜单名称
