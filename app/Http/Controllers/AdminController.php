@@ -10,7 +10,7 @@ class AdminController extends CommenController
 {
     public function login(Request $request){
         if($request->isMethod('post') && $request->has(['username','password'])){
-            if($request->input('username')==Config::get('options.UserName') && $request->input('password')==Config::get('options.PassWord')){
+            if($request->input('username')==Config::get('options.UserName') && md5(md5($request->input('password')))==Config::get('options.PassWord')){
                 Session::put('username',Config::get('options.UserName'));
                 return view('back');
             }else{

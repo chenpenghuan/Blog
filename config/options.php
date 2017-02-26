@@ -22,7 +22,7 @@ return [
     //后台账号
     'UserName'=>'admin',
     //后台账号密码
-    'PassWord'=>'admin888',
+    'PassWord'=>'4d668681c05d9f102d989b09cc10512e',
 
     'CreateSucceed'=>['Items'=>'菜单创建成功','Articles'=>'文章创建成功'],
     'CreateFailed'=>['Items'=>'菜单创建失败','Articles'=>'文章创建失败'],
