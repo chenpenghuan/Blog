@@ -17,6 +17,7 @@ class AdminController extends CommenController
                 return back()->with('msg',Config::get('options.LoginError'));
             }
         }
+        Session::forget('username');
         return view('Admin.login');
     }
     public function logout(){

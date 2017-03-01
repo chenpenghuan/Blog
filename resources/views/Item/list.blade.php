@@ -1,7 +1,7 @@
 @extends('back')
 @section('title')
     菜单管理
-    @endsection
+@endsection
 @section('contain')
     <table class="table table-bordered">
         <tr>

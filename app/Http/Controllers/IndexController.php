@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Models\Articles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends CommenController
 {
@@ -35,5 +36,13 @@ class IndexController extends CommenController
         }else{
             return view('Index.error');
         }
+    }
+    public function setsession(Request $request){
+        Session::put('key1','value1');
+    }
+    public function getsession(Request $request){
+        p(Session::get('key1'));
+        p(Session::getId());
+        //69Z7Un4Rw4gCUQTfLKe78CG1yltzUxnjX5YJg6ty
     }
 }

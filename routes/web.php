@@ -16,9 +16,12 @@ Route::get('/', function () {
 });
 */
 Route::get('/','IndexController@index');
+Route::get('/setsession','IndexController@setsession');
+Route::get('/getsession','IndexController@getsession');
 Route::any('/admin/login','AdminController@login');
 Route::get('/admin/logout','AdminController@logout');
 
+//模块管理
 Route::group(['prefix'=>'items','middleware'=>'checklogin'],function(){
     Route::get('list','ItemsController@list');
     Route::get('edit','ItemsController@edit');
@@ -28,6 +31,7 @@ Route::group(['prefix'=>'items','middleware'=>'checklogin'],function(){
     Route::get('delete','ItemsController@delete');
 });
 
+//文章模块
 Route::group(['prefix'=>'articles','middleware'=>'checklogin'],function (){
     Route::get('list','ArticlesController@list');
     Route::get('edit','ArticlesController@edit');
@@ -37,6 +41,16 @@ Route::group(['prefix'=>'articles','middleware'=>'checklogin'],function (){
     Route::get('delete','ArticlesController@delete');
 });
 
+//评论模块
+Route::group(['prefix'=>'reply'],function (){
+    Route::get('list','ReplyController@list');
+    Route::any('add','ReplyController@add');
+    //Route::get('show','ReplyController@show');
+    Route::get('manage','ReplyController@manage');
+    //Route::get('count','ReplyController@count');
+});
+
+//展示模块
 Route::group(['prefix'=>'index'],function (){
     Route::get('index','IndexController@index');
     Route::get('userinfo','IndexController@userinfo');
@@ -44,3 +58,4 @@ Route::group(['prefix'=>'index'],function (){
     Route::get('recommend','IndexController@recommend');
     Route::get('show','IndexController@show');
 });
+

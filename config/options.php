@@ -14,6 +14,8 @@ return [
     'Account'=>'统计报告',
     'ItemsManage'=>'菜单管理',
     'ArticlesManage'=>'文章管理',
+    'RepliesManage'=>'评论管理',
+    'LoginTitle'=>'欢迎登陆',
 
     //中间件验证出错时的报错信息
     'LoginTimeOut'=>'登陆超时，请重新登陆',
@@ -26,8 +28,12 @@ return [
 
     'CreateSucceed'=>['Items'=>'菜单创建成功','Articles'=>'文章创建成功'],
     'CreateFailed'=>['Items'=>'菜单创建失败','Articles'=>'文章创建失败'],
-    'DeleteSucceed'=>['Items'=>'菜单删除成功','Articles'=>'文章删除成功'],
-    'DeleteFailed'=>['Items'=>'菜单删除失败','Articles'=>'文章删除失败'],
+    'DeleteSucceed'=>['Items'=>'菜单删除成功','Articles'=>'文章删除成功','Replies'=>'评论删除成功'],
+    'DeleteFailed'=>['Items'=>'菜单删除失败','Articles'=>'文章删除失败','Replies'=>'评论删除失败'],
     'EditSucceed'=>['Items'=>'菜单修改成功','Articles'=>'文章修改成功'],
+    //审核评论
+    'PassSucceed'=>['Replies'=>'评论审核成功'],
+    'PassFailed'=>['Replies'=>'评论审核失败'],
+
     'DataError'=>'数据错误，请返回重试',
 ];

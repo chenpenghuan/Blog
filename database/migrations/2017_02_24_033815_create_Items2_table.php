@@ -13,7 +13,14 @@ class Items2 extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('items1', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->tinyInteger('sort');
+            $this->tinyInteger('item1_id');
+            $table->tinyInteger('status');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Items2 extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('items2');
     }
 }

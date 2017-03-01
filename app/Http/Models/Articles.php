@@ -28,4 +28,9 @@ class Articles extends Model
         'updated_at' => '修改时间',
         'body'=>'内容',
     ];
+    //根据文章id获得文章标题
+    public static function getArticleTitle($id){
+        $title=SELF::where('id','=',$id)->first(['title']);
+        return $title->title;
+    }
 }

@@ -1,6 +1,6 @@
 @extends('back')
 @section('title')
-    文章管理
+    {{\Illuminate\Support\Facades\Config::get('options.ArticlesManage')}}
 @endsection
 @section('contain')
     <table class="table table-bordered">
@@ -14,6 +14,8 @@
                 </td>
             @endif
         @endforeach
+        <td>已审评论</td>
+        <td>待审评论</td>
         <td>管理/<a href=""><a href="{{url('articles/create')}}">新建</a></a></td>
         </thead>
         <tbody>
@@ -27,6 +29,8 @@
                         </td>
                     @endif
                 @endforeach
+                    <td><a href="{{url('reply/list')}}?article_id={{$article->id}}&status=1">{{\App\Http\Models\Reply::count($article->id,1)}}</a></td>
+                    <td><a href="{{url('reply/list')}}?article_id={{$article->id}}&status=0">{{\App\Http\Models\Reply::count($article->id,0)}}</a></td>
                 <td><a href="{{url('articles/edit')}}?id={{$article->id}}">修改</a> | <a onclick="return confirm('确定删除这篇文章么？')" href="{{url('articles/delete')}}?id={{$article->id}}">删除</a></td>
             </tr>
         @endforeach

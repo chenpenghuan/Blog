@@ -23,13 +23,13 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand" href="#">统计报告</a>
+                    <a class="navbar-brand" href="#">{{\Illuminate\Support\Facades\Config::get('options.Account')}}</a>
                 </div>
                 <div>
-                    <a class="navbar-brand" href="{{url('items/list')}}">菜单管理</a>
+                    <a class="navbar-brand" href="{{url('items/list')}}">{{\Illuminate\Support\Facades\Config::get('options.ItemsManage')}}</a>
                 </div>
                 <div>
-                    <a class="navbar-brand" href="{{url('articles/list')}}">文章管理</a>
+                    <a class="navbar-brand" href="{{url('articles/list')}}">{{\Illuminate\Support\Facades\Config::get('options.ArticlesManage')}}</a>
                 </div>
                 <div class="navbar-brand" style="color:blue;float: right">{{Session::get('username')}}</div>
             </div>
