@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 */
 Route::get('/','IndexController@index');
-Route::get('/setsession','IndexController@setsession');
-Route::get('/getsession','IndexController@getsession');
 Route::any('/admin/login','AdminController@login');
 Route::get('/admin/logout','AdminController@logout');
 
@@ -48,6 +46,7 @@ Route::group(['prefix'=>'reply'],function (){
     //Route::get('show','ReplyController@show');
     Route::get('manage','ReplyController@manage');
     //Route::get('count','ReplyController@count');
+    Route::get('emailactive','ReplyController@emailactive');
 });
 
 //展示模块

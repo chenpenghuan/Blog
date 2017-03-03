@@ -1,0 +1,1 @@
+<a href="{{url('reply/emailactive')}}?email={{$email}}&token={{$token}}">点击激活邮箱</a>

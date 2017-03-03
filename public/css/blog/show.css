@@ -8,3 +8,12 @@
 .article .abstract{
     border: 1px gray dashed;
 }
+.gap-big{
+    height: 10px;
+    background: #EE9285;
+    margin-bottom: 10px;
+}
+.gap-small{
+    height: 3px;
+    background: #EE9285;
+}
