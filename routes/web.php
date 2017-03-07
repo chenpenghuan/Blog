@@ -56,5 +56,6 @@ Route::group(['prefix'=>'index'],function (){
     Route::get('list','IndexController@list');
     Route::get('recommend','IndexController@recommend');
     Route::get('show','IndexController@show');
+    Route::get('test','IndexController@test');
 });
 

@@ -15,12 +15,12 @@ class IndexController extends CommenController
         $articles = Articles::where('status', '=', 1)->where('recommend', '=', 1)->get(['id', 'title', 'abstract', 'updated_at']);
         return view('Index/index', ['articles' => $articles]);
     }
-
+    
     public function userinfo()
     {
         return view('Index/userinfo');
     }
-
+    
     public function list(Request $request)
     {
         if ($request->has(['type', 'firid']) && in_array($request->input('type'), ['1', '2']) && is_numeric($request->input('firid'))) {
@@ -36,7 +36,7 @@ class IndexController extends CommenController
         $articles = $articles->get(['id', 'title', 'abstract', 'updated_at']);
         return view('Index.list', ['articles' => $articles]);
     }
-
+    
     public function show(Request $request)
     {
         if ($request->has('id') && is_numeric($request->input('id'))) {
@@ -55,8 +55,8 @@ class IndexController extends CommenController
             return view('Index.error');
         }
     }
-
-
+    
+    
     //根据评论ID取回复数据
     private function getRepliesBack($reply_id=null)
     {
@@ -64,6 +64,35 @@ class IndexController extends CommenController
         foreach ($tmp as $v){
             $this->tmp[] = $v;
             $this->getRepliesBack($reply_id =$v['id']);
+        }
+    }
+    public function test(){
+        $article_id=1;
+        $tmp = Reply::where('article_id', '=', $article_id)->where('status', '=', 1)->get(['id', 'reply_id'])->toArray();
+        
+        $result=[];
+        foreach($tmp as $row){
+            $this->tmp=[];
+            if($row['reply_id']==null){
+                $this->formt($arr=$tmp,$reply_id=$row['id']);
+                $result[$row['id']]=$this->tmp;
+            }
+        }
+        p($result);
+        
+        //p($tmp);
+        //p(format($arr=$tmp));
+    }
+    private function formt($arr,$reply_id=1){
+        $indexs=[];
+        foreach($arr as $row){
+            if($row['reply_id']==$reply_id){
+                $this->tmp[]=$row;
+                $indexs[]=$row['id'];
+            }
+        }
+        foreach($indexs as $index){
+            $this->formt($arr,$index);
         }
     }
 }
