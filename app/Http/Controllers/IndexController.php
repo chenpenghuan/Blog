@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\Articles;
 use App\Http\Models\Reply;
+use App\Http\Models\Articles;
+use App\Http\Models\Items1;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\CommenController;
 
 class IndexController extends CommenController
 {
-    private $tmp;
+    /**
+    * 首页
+    * @return void
+    */
     public function index()
     {
         $articles = Articles::where('status', '=', 1)->where('recommend', '=', 1)->get(['id', 'title', 'abstract', 'updated_at']);
@@ -18,7 +24,7 @@ class IndexController extends CommenController
     
     public function userinfo()
     {
-        return view('Index/userinfo');
+        return Response::view('Index/userinfo')->setCache(array('public' => 1));
     }
     
     public function list(Request $request)
@@ -31,7 +37,7 @@ class IndexController extends CommenController
                 $articles = $articles->where('item_sec', '=', null);
             }
         } else {
-            return view('Index.error');
+            return Response::view('Index.error')->setCache(array('public' => 1));
         }
         $articles = $articles->get(['id', 'title', 'abstract', 'updated_at']);
         return view('Index.list', ['articles' => $articles]);
@@ -41,58 +47,48 @@ class IndexController extends CommenController
     {
         if ($request->has('id') && is_numeric($request->input('id'))) {
             $article = Articles::where('id', '=', $request->input('id'))->first(['id', 'body', 'updated_at']);
-            $this->getRepliesBack();
-            $replies=$this->tmp;
-            $indexs=[];
-            foreach ($replies as $index => $reply){
-                if($reply['reply_id']==null){
-                    $indexs[]=$index;     //所有父级评论的ID
-                }
-            }
-            $indexs[]=count($replies);
-            return view('Index.show', ['article' => $article, 'replies' => $replies,'indexs'=>$indexs]);
+            return view('Index.show', ['article' => $article, 'replies' => $this->getReplies()]);
         } else {
             return view('Index.error');
         }
     }
-    
-    
-    //根据评论ID取回复数据
-    private function getRepliesBack($reply_id=null)
+
+
+    /**
+     * 根据文章ID获取所有评论
+     * @param int $article_id
+     * @return array
+     */
+    public function getReplies($article_id=1)
     {
-        $tmp = Reply::where('reply_id', '=', $reply_id)->where('status', '=', 1)->get(['id', 'reply_id','nickname','cont','created_at'])->toArray();
-        foreach ($tmp as $v){
-            $this->tmp[] = $v;
-            $this->getRepliesBack($reply_id =$v['id']);
-        }
-    }
-    public function test(){
-        $article_id=1;
-        $tmp = Reply::where('article_id', '=', $article_id)->where('status', '=', 1)->get(['id', 'reply_id'])->toArray();
-        
+        //查出所有的回复
         $result=[];
-        foreach($tmp as $row){
-            $this->tmp=[];
-            if($row['reply_id']==null){
-                $this->formt($arr=$tmp,$reply_id=$row['id']);
-                $result[$row['id']]=$this->tmp;
+        $replies = Reply::where('article_id', '=', $article_id)->where('status', '=', 1)->get(['id'])->toArray();
+        foreach ($replies as $reply){
+            $tmp=$this->getParents($reply['id'],$reply['id']);
+            foreach ($tmp as $k => $v) {
+                //var_dump($v);
+                sort($v);
+                $result[$k]=$v;
             }
         }
-        p($result);
-        
-        //p($tmp);
-        //p(format($arr=$tmp));
+        return $result;
+        //var_dump($this->getParents(7,7));
     }
-    private function formt($arr,$reply_id=1){
-        $indexs=[];
-        foreach($arr as $row){
-            if($row['reply_id']==$reply_id){
-                $this->tmp[]=$row;
-                $indexs[]=$row['id'];
+    public function getParents($childId,$id,&$result=[]){//根据当前评论id递归获取所有父级评论id
+        $parent=Reply::where('id','=',$id)->where('status','=',1)->first(['reply_id']);
+        if($parent!=null){
+            $parent=$parent->toArray();
+        }
+        if(empty($parent)==false){//如果父级回复不为空
+            if(empty($result) || (!isset($result[$childId]))){//如果没有父级评论，或者最子评论不在数组中，则初始化数组并加入父级评论
+                $result[$childId]=[];
             }
+            if($parent['reply_id']!=null){
+                $result[$childId][]=intval($parent['reply_id']);
+            }
+            $this->getParents($childId,$parent['reply_id'],$result);
         }
-        foreach($indexs as $index){
-            $this->formt($arr,$index);
-        }
+        return $result;
     }
 }

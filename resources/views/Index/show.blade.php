@@ -23,35 +23,58 @@
             <p class="lead">评论：</p>
         @endif
         <hr>
-        @for($m=1;$m<count($indexs);$m++)
+        <?php $floor=1;?>
+        @foreach($replies as $id => $reply)
             <div class="gap-small" style="margin:1em 0 1em 0"></div>
             <div class="reply" style="">
-                <?php
-                $cou = 0;
-                ?>
-                @for($n=$indexs[$m-1];$n<$indexs[$m];$n++)
-                    <div class="text-left" style="width:{{100-1*$cou}}%;margin-left: {{1*$cou}}%;border-bottom: 1px dashed #ee9285;border-left: 5px solid #ee9285"><span
-                                class="glyphicon glyphicon-user"></span><span>{{$replies[$n]['nickname']}}
-                            ：</span>
-                        @if($n!=$indexs[$m-1])
-                            <div><font style="background: #ECECEC;margin-left: 2em">回复{{ \App\Http\Models\Reply::getNickName($replies[$n]['reply_id']) }}</font>：{{$replies[$n]['cont']}}</div>
-                            @else
 
-                            <div class="text-left" style="text-indent: 2em">
-                                {{$replies[$n]['cont']}}
+                <div class="text-left" style="border: 1px dashed #ee9285;padding: 5px;">
+                @if(count($reply)>0)
+                    <!--有父级评论-->
+                        @for($i=0;$i<count($reply);$i++)
+                            <div>
+                                <div class=""
+                                     style="border: 1px dashed #E2E2E2;width: {{100-($i+1)*0.5}}%;margin-left: {{($i+1)*0.5}}%">
+                                    <div>
+                                        <div style="float: left;width: 95%;">
+                                            <span class="glyphicon glyphicon-user"></span><span>{{\App\Http\Models\Reply::getColVal($reply[$i],'nickname')}}
+                                                ：</span>
+                                        </div>
+                                        <div style="float: right;width: 5%;">
+                                            {{$i+1}}楼
+                                        </div>
+                                    </div>
+                                    <div class="text-left" style="text-indent: 2em">
+                                        {{\App\Http\Models\Reply::getColVal($reply[$i],'cont')}}
+                                    </div>
+                                    <div class="text-right">{{\App\Http\Models\Reply::getColVal($reply[$i],'created_at')}}</div>
+                                    <div class="text-right reply_back" reply_id="{{$reply[$i]}}">回复</div>
+                                </div>
                             </div>
-                        @endif
-                        <div class="text-right">{{$replies[$n]['created_at']}}</div>
-                        <div class="text-right reply_back" reply_id="{{$replies[$n]['id']}}">回复</div>
-
+                        @endfor
+                    @endif
+                    <div>
+                        <div style="float: left;width: 95%;">
+                            <span class="glyphicon glyphicon-user"></span><span>{{\App\Http\Models\Reply::getColVal($id,'nickname')}}
+                                ：</span>
+                        </div>
+                        <div style="float: right;width: 5%;">
+                            {{$floor}}楼
+                        </div>
                     </div>
-                    <?php
-                    $cou++;
-                    ?>
-                @endfor
+                    <!--
+                    <span class="glyphicon glyphicon-user"></span><span>{{\App\Http\Models\Reply::getColVal($id,'nickname')}}
+                        ：</span>{{$id}}
+                    -->
+                    <div class="text-left" style="text-indent: 2em">
+                        {{\App\Http\Models\Reply::getColVal($id,'cont')}}
+                    </div>
+                    <div class="text-right">{{\App\Http\Models\Reply::getColVal($id,'created_at')}}</div>
+                    <div class="text-right reply_back" reply_id="{{$id}}">回复</div>
+                </div>
             </div>
-
-        @endfor
+            <?php $floor++; ?>
+        @endforeach
     </div>
 @endsection
 @section('comment')

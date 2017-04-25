@@ -1,3 +1,3 @@
 <script>
-    alert('{{msg}}');
+    alert('{{$msg}}');
 </script>

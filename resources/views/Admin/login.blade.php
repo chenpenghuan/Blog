@@ -30,7 +30,6 @@
     <div>
         <input type="submit" value="提交">
     </div>
-
 </form>
 </body>
 </html>

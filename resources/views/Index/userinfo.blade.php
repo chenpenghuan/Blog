@@ -14,8 +14,8 @@
             <p class="text-center lead">个人信息</p>
             <hr>
             <tr>
-                <td rowspan="5" width="40%"><img src="https://chenpenghuan.github.io/images/cph.sml.jpg" alt="" ></td>
-                <td rowspan="5" width="10%"></td>
+                <td rowspan="6" width="40%"><img src="{{asset(config('options.public')).'/img/cph.sml.jpg'}}" alt="" ></td>
+                <td rowspan="6" width="10%"></td>
                 <td><p class="lead">陈鹏欢，程序员，北京</p></td>
             </tr>
             <tr>
@@ -28,7 +28,10 @@
                 <td><p class="lead">QQ：1034478083</p></td>
             </tr>
             <tr>
-                <td><p class="lead">GitHub：<a href="https://github.com/chenpenghuan">https://github.com/johnlui</a></p></td>
+                <td><p class="lead">GitHub：<a href="https://github.com/chenpenghuan">https://github.com/chenpenghuan</a></p></td>
+            </tr>
+            <tr>
+                <td><p class="lead">CSDN：<a href="http://blog.csdn.net/chenpenghuan">http://blog.csdn.net/chenpenghuan</a></p></td>
             </tr>
         </table>
         <hr>

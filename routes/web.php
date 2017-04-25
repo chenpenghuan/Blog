@@ -57,5 +57,6 @@ Route::group(['prefix'=>'index'],function (){
     Route::get('recommend','IndexController@recommend');
     Route::get('show','IndexController@show');
     Route::get('test','IndexController@test');
+    Route::any('getRepliesNums','IndexController@getRepliesNums');
 });
 

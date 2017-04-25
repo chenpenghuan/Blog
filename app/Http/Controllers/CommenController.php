@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 
 class CommenController extends Controller
 {
-    public static function getItems(){
-        $items1 = Items1::where('status','=',1)->orderBy('sort', 'asc')->get(['id', 'name','sort'])->toArray();
+    public static function getItems()
+    {
+        $items1 = Items1::where('status', '=', 1)->orderBy('sort', 'asc')->get(['id', 'name', 'sort'])->toArray();
         $items1_ids = [];
         foreach ($items1 as $item1) {
             $items1_ids[] = $item1['id'];
         }
-        $items2 = Items2::where('status','=',1)->whereIn('item1_id', $items1_ids)->orderBy('sort', 'asc')->get(['id', 'name', 'item1_id','sort'])->toArray();
-        return ['items1'=>$items1,'items2'=>$items2];
+        $items2 = Items2::where('status', '=', 1)->whereIn('item1_id', $items1_ids)->orderBy('sort', 'asc')->get(['id', 'name', 'item1_id', 'sort'])->toArray();
+        return ['items1' => $items1, 'items2' => $items2];
     }
+
     public static function formatItems()
     {
         $items = SELF::getItems();

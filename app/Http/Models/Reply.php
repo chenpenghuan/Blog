@@ -34,8 +34,8 @@ class Reply extends Model
         $replies = SELF::where('article_id', '=', $id)->where('status', '=', $status)->get($cols);
         return $replies;
     }
-    //根据评论ID获得昵称
-    public static function getNickName($id){
-        return SELF::where('id','=',$id)->first(['nickname'])->nickname;
+    //根据评论的字段名获取字段值
+    public static function getColVal($id,$colName){
+        return SELF::where('id','=',$id)->first([$colName])->$colName;
     }
 }
