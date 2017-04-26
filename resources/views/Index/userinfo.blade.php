@@ -14,8 +14,8 @@
             <p class="text-center lead">个人信息</p>
             <hr>
             <tr>
-                <td rowspan="6" width="40%"><img src="{{asset(config('options.public')).'/img/cph.sml.jpg'}}" alt="" ></td>
-                <td rowspan="6" width="10%"></td>
+                <td rowspan="7" width="40%"><img src="{{asset(config('options.public')).'/img/cph.sml.jpg'}}" alt="" ></td>
+                <td rowspan="7" width="10%"></td>
                 <td><p class="lead">陈鹏欢，程序员，北京</p></td>
             </tr>
             <tr>
@@ -32,6 +32,11 @@
             </tr>
             <tr>
                 <td><p class="lead">CSDN：<a href="http://blog.csdn.net/chenpenghuan">http://blog.csdn.net/chenpenghuan</a></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="lead">详细信息：<a href="http://listenercph.pe.hu">http://listenercph.pe.hu</a></p>
+                </td>
             </tr>
         </table>
         <hr>
