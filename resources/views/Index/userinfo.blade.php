@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td>
-                    <p class="lead">详细信息：<a href="http://listenercph.pe.hu">http://listenercph.pe.hu</a></p>
+                    <p class="lead">详细信息：<a href="http://listener.pe.hu">http://listenercph.pe.hu</a></p>
                 </td>
             </tr>
         </table>

@@ -8,6 +8,7 @@
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet"
           href="{{asset(\Illuminate\Support\Facades\Config::get('options.public').'/css/blog/commen.css')}}">
+    <link rel="shortcut icon" href="favorite.ico" type="image/x-icon" />
     @section('head')
     @show
     <style>
