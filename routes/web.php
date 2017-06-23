@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 */
 Route::get('/','IndexController@index');
+Route::get('/captcha/{tmp?}','AdminController@captcha');
 Route::any('/admin/login','AdminController@login');
 Route::get('/admin/logout','AdminController@logout');
 

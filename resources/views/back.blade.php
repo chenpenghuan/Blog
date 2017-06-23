@@ -7,9 +7,9 @@
             统计报告
         @show
     </title>
-    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @section('head')
     @show
     @section('css')
@@ -33,7 +33,7 @@
                     <a class="navbar-brand"
                        href="{{url('articles/list')}}">{{\Illuminate\Support\Facades\Config::get('options.ArticlesManage')}}</a>
                 </div>
-                <div class="navbar-brand" style="color:blue;float: right">{{Session::get('username')}}</div>
+                <div class="navbar-brand" style="color:blue;float: right">{{Session::get('username')}}<button onclick="window.location.href='{{url('admin/logout')}}'">退出</button></div>
             </div>
         </nav>
     </div>

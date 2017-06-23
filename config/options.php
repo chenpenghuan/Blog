@@ -16,6 +16,7 @@ return [
     'ArticlesManage'=>'文章管理',
     'RepliesManage'=>'评论管理',
     'LoginTitle'=>'欢迎登陆',
+    'LoginSuccess'=>'登录成功',
 
     'EmailExist'=> '评论发表成功，待博主审核',
     'EmailActiveUntil'=>86400,      //邮箱验证链接24小时时效
@@ -24,12 +25,13 @@ return [
     'EmailNotActive'=>'您的邮箱上次评论后仍未通过验证，请先登陆您的邮箱点击验证链接进行验证',
     //中间件验证出错时的报错信息
     'LoginTimeOut'=>'登陆超时，请重新登陆',
-    //控制器验证出错是的报错信息
+    //控制器验证出错时的报错信息
     'LoginError'=>'登录失败，请检查账号密码',
+    'CaptchaError'=>'验证码错误',
     //后台账号
     'UserName'=>'admin',
     //后台账号密码
-    'PassWord'=>'4d668681c05d9f102d989b09cc10512e',
+    'PassWord'=>'bdac1132bd982276eec7e5f1073c432b',
 
     'CreateSucceed'=>['Items'=>'菜单创建成功','Articles'=>'文章创建成功'],
     'CreateFailed'=>['Items'=>'菜单创建失败','Articles'=>'文章创建失败'],
