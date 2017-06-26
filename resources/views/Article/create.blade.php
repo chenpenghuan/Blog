@@ -100,6 +100,7 @@
                 }
             });
             $('#item1').change(function () {
+                $('#item2').empty();
                 $.each(items, function (k1, v1) {
                     if ($('#item1').val() == v1['id']) {
                         if (v1['item2'] != null) {
